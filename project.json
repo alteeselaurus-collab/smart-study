@@ -1,0 +1,24 @@
+{
+  "overview": "SMART STUDY est une application éducative mondiale qui aide chaque élève à comprendre et maîtriser ses leçons rapidement, avec des cours adaptés à son niveau, un professeur IA et des révisions intelligentes.",
+  "features": [
+    "Cours adaptés au niveau de chaque élève",
+    "Professeur IA qui explique simplement",
+    "Mode Apprendre en 5, 10 ou 20 minutes",
+    "Exercices avec corrections expliquées",
+    "Fiches de mémorisation et résumés",
+    "Révisions intelligentes",
+    "Mode contrôle et examen",
+    "Suivi de progression",
+    "Points, niveaux et récompenses",
+    "Choix du pays, du programme et de la langue"
+  ],
+  "category": "education",
+  "tags": [
+    "education",
+    "apprentissage",
+    "ia",
+    "eleves",
+    "revisions"
+  ],
+  "last_updated": "2026-10-06T00:16:24.983Z"
+}

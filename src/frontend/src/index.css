@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Nunito";
+  src: url("/assets/fonts/Nunito.woff2") format("woff2");
+  font-weight: 200 1000;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("/assets/fonts/Figtree.woff2") format("woff2");
+  font-weight: 300 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --font-display: "Nunito", sans-serif;
+    --font-body: "Figtree", sans-serif;
+    --font-mono: "Geist Mono", monospace;
+    --radius: 1rem;
+
+    /* Surfaces — warm off-white, never pure white page */
+    --background: 0.975 0.008 85;
+    --foreground: 0.235 0.045 285;
+    --card: 0.995 0.004 85;
+    --card-foreground: 0.235 0.045 285;
+    --popover: 1 0 0;
+    --popover-foreground: 0.235 0.045 285;
+
+    /* Primary — deep indigo-violet, the study companion */
+    --primary: 0.47 0.185 285;
+    --primary-foreground: 0.985 0.008 285;
+
+    /* Secondary — soft lavender wash */
+    --secondary: 0.93 0.025 285;
+    --secondary-foreground: 0.36 0.09 285;
+
+    --muted: 0.94 0.012 85;
+    --muted-foreground: 0.52 0.03 285;
+
+    /* Accent — warm motivating amber */
+    --accent: 0.76 0.155 70;
+    --accent-foreground: 0.26 0.06 70;
+
+    /* Feedback — used by exercise correction */
+    --destructive: 0.56 0.2 25;
+    --destructive-foreground: 0.985 0.008 25;
+    --success: 0.6 0.155 155;
+    --success-foreground: 0.985 0.008 155;
+    --warning: 0.78 0.15 80;
+    --warning-foreground: 0.27 0.06 80;
+
+    --border: 0.9 0.018 285;
+    --input: 0.9 0.018 285;
+    --ring: 0.47 0.185 285;
+
+    /* 7-step learning path — one hue per step, indigo → violet → blue → teal → emerald → amber → rose */
+    --step-1: 0.5 0.19 285;
+    --step-2: 0.55 0.2 305;
+    --step-3: 0.58 0.17 250;
+    --step-4: 0.62 0.14 200;
+    --step-5: 0.6 0.155 155;
+    --step-6: 0.76 0.155 70;
+    --step-7: 0.6 0.19 15;
+
+    --chart-1: 0.5 0.19 285;
+    --chart-2: 0.6 0.155 155;
+    --chart-3: 0.76 0.155 70;
+    --chart-4: 0.58 0.17 250;
+    --chart-5: 0.6 0.19 15;
+
+    --sidebar: 0.965 0.012 285;
+    --sidebar-foreground: 0.235 0.045 285;
+    --sidebar-primary: 0.47 0.185 285;
+    --sidebar-primary-foreground: 0.985 0.008 285;
+    --sidebar-accent: 0.93 0.025 285;
+    --sidebar-accent-foreground: 0.36 0.09 285;
+    --sidebar-border: 0.9 0.018 285;
+    --sidebar-ring: 0.47 0.185 285;
+
+    /* Richer tokens */
+    --gradient-primary: linear-gradient(
+      135deg,
+      oklch(0.5 0.19 285),
+      oklch(0.55 0.2 305)
+    );
+    --gradient-accent: linear-gradient(
+      135deg,
+      oklch(0.78 0.15 75),
+      oklch(0.72 0.17 55)
+    );
+    --gradient-subtle: linear-gradient(
+      180deg,
+      oklch(0.985 0.006 85),
+      oklch(0.96 0.014 285)
+    );
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 0.165 0.028 285;
+    --foreground: 0.95 0.012 285;
+    --card: 0.205 0.032 285;
+    --card-foreground: 0.95 0.012 285;
+    --popover: 0.225 0.034 285;
+    --popover-foreground: 0.95 0.012 285;
+
+    --primary: 0.72 0.155 290;
+    --primary-foreground: 0.17 0.03 290;
+
+    --secondary: 0.26 0.04 285;
+    --secondary-foreground: 0.88 0.02 285;
+
+    --muted: 0.26 0.03 285;
+    --muted-foreground: 0.68 0.025 285;
+
+    --accent: 0.8 0.145 75;
+    --accent-foreground: 0.2 0.05 75;
+
+    --destructive: 0.64 0.18 25;
+    --destructive-foreground: 0.17 0.03 25;
+    --success: 0.7 0.15 155;
+    --success-foreground: 0.17 0.03 155;
+    --warning: 0.8 0.14 80;
+    --warning-foreground: 0.2 0.05 80;
+
+    --border: 0.3 0.035 285;
+    --input: 0.3 0.035 285;
+    --ring: 0.72 0.155 290;
+
+    --step-1: 0.68 0.16 285;
+    --step-2: 0.7 0.17 305;
+    --step-3: 0.72 0.15 250;
+    --step-4: 0.74 0.13 200;
+    --step-5: 0.72 0.15 155;
+    --step-6: 0.8 0.145 75;
+    --step-7: 0.72 0.17 15;
+
+    --chart-1: 0.68 0.16 285;
+    --chart-2: 0.72 0.15 155;
+    --chart-3: 0.8 0.145 75;
+    --chart-4: 0.72 0.15 250;
+    --chart-5: 0.72 0.17 15;
+
+    --sidebar: 0.19 0.03 285;
+    --sidebar-foreground: 0.95 0.012 285;
+    --sidebar-primary: 0.72 0.155 290;
+    --sidebar-primary-foreground: 0.17 0.03 290;
+    --sidebar-accent: 0.26 0.04 285;
+    --sidebar-accent-foreground: 0.88 0.02 285;
+    --sidebar-border: 0.3 0.035 285;
+    --sidebar-ring: 0.72 0.155 290;
+
+    --gradient-primary: linear-gradient(
+      135deg,
+      oklch(0.68 0.17 285),
+      oklch(0.7 0.18 305)
+    );
+    --gradient-accent: linear-gradient(
+      135deg,
+      oklch(0.82 0.14 75),
+      oklch(0.76 0.16 55)
+    );
+    --gradient-subtle: linear-gradient(
+      180deg,
+      oklch(0.2 0.03 285),
+      oklch(0.17 0.028 285)
+    );
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  .bg-gradient-primary {
+    background-image: var(--gradient-primary);
+  }
+  .bg-gradient-accent {
+    background-image: var(--gradient-accent);
+  }
+  .bg-gradient-subtle {
+    background-image: var(--gradient-subtle);
+  }
+  .text-gradient-primary {
+    background-image: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .shadow-soft {
+    box-shadow: 0 1px 2px -1px oklch(0.3 0.06 285 / 0.08), 0 4px 12px -4px
+      oklch(0.3 0.06 285 / 0.1);
+  }
+  .shadow-lifted {
+    box-shadow: 0 2px 4px -2px oklch(0.3 0.06 285 / 0.1), 0 12px 28px -8px
+      oklch(0.3 0.06 285 / 0.16);
+  }
+}

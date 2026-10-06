@@ -1,0 +1,272 @@
+type Value = 
+ variant {
+   "bool": bool;
+   float: float64;
+   "int": int;
+   "nat": nat;
+   "null";
+   "text": text;
+ };
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type Timestamp = int;
+type SubjectView = 
+ record {
+   description: text;
+   icon: text;
+   id: SubjectId;
+   name: text;
+ };
+type SubjectMastery = 
+ record {
+   masteryRate: nat;
+   name: text;
+   subjectId: SubjectId;
+ };
+type SubjectId = nat;
+type StepState = 
+ record {
+   completed: bool;
+   step: LearningStep;
+ };
+type SessionId = nat;
+type RewardState = 
+ record {
+   badges: vec Badge;
+   level: nat;
+   points: nat;
+ };
+type RevisionItem = 
+ record {
+   lessonId: LessonId;
+   priority: nat;
+   reason: text;
+   subjectId: SubjectId;
+   title: text;
+ };
+type Result__1 = 
+ variant {
+   err: Error;
+   ok;
+ };
+type Result = 
+ record {
+   hasMore: bool;
+   rows: vec vec Cell;
+ };
+type ProgressOverview = 
+ record {
+   level: nat;
+   recentActivity: vec ActivityEntry;
+   subjects: vec SubjectMastery;
+   totalPoints: nat;
+ };
+type ProfileView = 
+ record {
+   country: text;
+   curriculum: text;
+   exercisesCompleted: nat;
+   language: text;
+   lessonsCompleted: nat;
+   level: text;
+   points: nat;
+   studentLevel: nat;
+   updatedAt: Timestamp;
+ };
+type ProfileInput = 
+ record {
+   country: text;
+   curriculum: text;
+   language: text;
+   level: text;
+ };
+type LessonSummary = 
+ record {
+   id: LessonId;
+   level: text;
+   subjectId: SubjectId;
+   title: text;
+ };
+type LessonProgress = 
+ record {
+   currentStep: LearningStep;
+   lessonId: LessonId;
+   masteryRate: nat;
+   steps: vec StepState;
+   updatedAt: Timestamp;
+ };
+type LessonId = nat;
+type LessonDetail = 
+ record {
+   country: text;
+   curriculum: text;
+   example: text;
+   explanation: text;
+   id: LessonId;
+   keyPoints: vec text;
+   language: text;
+   level: text;
+   memorizationPoints: vec text;
+   memorizationSummary: text;
+   subjectId: SubjectId;
+   title: text;
+ };
+type LearningStep = 
+ variant {
+   comprendre;
+   corriger;
+   entrainer;
+   exemple;
+   maitriser;
+   memoriser;
+   tester;
+ };
+type ExerciseView = 
+ record {
+   choices: vec text;
+   id: ExerciseId;
+   lessonId: LessonId;
+   prompt: text;
+ };
+type ExerciseId = nat;
+type ExamView = 
+ record {
+   durationSeconds: nat;
+   id: ExamId;
+   lessonId: LessonId;
+   questions: vec ExamQuestion;
+   title: text;
+ };
+type ExamSession = 
+ record {
+   durationSeconds: nat;
+   examId: ExamId;
+   lessonId: LessonId;
+   sessionId: SessionId;
+   startedAt: Timestamp;
+   submitted: bool;
+ };
+type ExamResult = 
+ record {
+   examId: ExamId;
+   results: vec ExamQuestionResult;
+   score: nat;
+   sessionId: SessionId;
+   total: nat;
+ };
+type ExamQuestionResult = 
+ record {
+   correct: bool;
+   correctIndex: nat;
+   exerciseId: ExerciseId;
+   explanation: text;
+   prompt: text;
+   selectedIndex: nat;
+ };
+type ExamQuestion = 
+ record {
+   choices: vec text;
+   exerciseId: ExerciseId;
+   prompt: text;
+ };
+type ExamId = nat;
+type ExamAnswer = 
+ record {
+   exerciseId: ExerciseId;
+   selectedIndex: nat;
+ };
+type Error = 
+ variant {
+   AmbiguousAttribute: record {
+                         field: text;
+                         sources: vec text;
+                       };
+   FrontendOriginMismatch: record {
+                             expected: vec text;
+                             got: text;
+                           };
+   FrontendOriginsNotConfigured;
+   MalformedCandid;
+   MissingField: text;
+   MixedSsoSources: record {
+                      otherKeys: vec text;
+                      ssoKeys: vec text;
+                    };
+   NoAttributes;
+   Stale: record {ageNs: nat;};
+   UnknownNonce;
+   UntrustedSsoSource: record {domain: text;};
+ };
+type DurationMinutes = nat;
+type CondensedPath = 
+ record {
+   durationMinutes: DurationMinutes;
+   lessonId: LessonId;
+   steps: vec LearningStep;
+   summary: text;
+ };
+type Cell = 
+ record {
+   name: text;
+   value: Value;
+ };
+type BadgeId = text;
+type Badge = 
+ record {
+   description: text;
+   icon: text;
+   id: BadgeId;
+   name: text;
+ };
+type AnswerResult = 
+ record {
+   correct: bool;
+   correctIndex: nat;
+   explanation: text;
+ };
+type AiExplanation = 
+ record {
+   answer: text;
+   level: text;
+   question: text;
+ };
+type ActivityEntry = 
+ record {
+   at: Timestamp;
+   detail: text;
+   kind: text;
+   lessonId: LessonId;
+ };
+service : {
+  _initialize_access_control: () -> ();
+  _internet_identity_sign_in_finish: () -> (Result__1);
+  _internet_identity_sign_in_start: () -> (blob);
+  advanceStep: (lessonId: nat) -> (LessonProgress);
+  askAiTeacher: (lessonId: nat, question: text) -> (AiExplanation);
+  assignCallerUserRole: (user: principal, role: UserRole) -> ();
+  execute: (qJson: text) -> (Result) query;
+  getApiDoc: () -> (text) query;
+  getCallerUserRole: () -> (UserRole) query;
+  getCondensedPath: (lessonId: nat, durationMinutes: nat) ->
+   (CondensedPath) query;
+  getExam: (lessonId: nat) -> (opt ExamView) query;
+  getLesson: (lessonId: nat) -> (opt LessonDetail) query;
+  getLessonProgress: (lessonId: nat) -> (opt LessonProgress) query;
+  getProfile: () -> (opt ProfileView) query;
+  getProgress: () -> (ProgressOverview) query;
+  getRewards: () -> (RewardState) query;
+  isCallerAdmin: () -> (bool) query;
+  listExercises: (lessonId: nat) -> (vec ExerciseView) query;
+  listLessons: (subjectId: nat, level: text) -> (vec LessonSummary) query;
+  listRevisions: () -> (vec RevisionItem) query;
+  listSubjects: () -> (vec SubjectView) query;
+  schema: () -> (text) query;
+  startExam: (examId: nat) -> (ExamSession);
+  submitAnswer: (exerciseId: nat, selectedIndex: nat) -> (AnswerResult);
+  submitExam: (sessionId: nat, answers: vec ExamAnswer) -> (ExamResult);
+  updateProfile: (input: ProfileInput) -> (ProfileView);
+}

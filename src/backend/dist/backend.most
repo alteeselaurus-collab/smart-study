@@ -1,0 +1,330 @@
+// Version: 4.0.0
+type AccessControlState__201339279 =
+  {
+    var adminAssigned : Bool;
+    userRoles : Map__230067015<Principal, UserRole__91647283>
+  };
+type ActivityEntry__469211229 =
+  {
+    at : Timestamp__9856652;
+    detail : Text;
+    kind : Text;
+    lessonId : LessonId__3924353
+  };
+type ActivityEntry__608430235 =
+  {
+    at : Timestamp__301639476;
+    detail : Text;
+    kind : Text;
+    lessonId : LessonId__21783266
+  };
+type BadgeId__660749442 = Text;
+type BadgeId__744806540 = Text;
+type Badge__339734599 =
+  {description : Text; icon : Text; id : BadgeId__744806540; name : Text};
+type Badge__637517080 =
+  {description : Text; icon : Text; id : BadgeId__660749442; name : Text};
+type Data__44217153<K, V> = {var count : Nat__227979830; kvs : [var ?(K, V)]};
+type ExamId__379139927 = Nat;
+type ExamId__480491481 = Nat;
+type ExamQuestionResult__317885813 =
+  {
+    correct : Bool;
+    correctIndex : Nat;
+    exerciseId : ExerciseId__592956379;
+    explanation : Text;
+    prompt : Text;
+    selectedIndex : Nat
+  };
+type ExamQuestionResult__789162871 =
+  {
+    correct : Bool;
+    correctIndex : Nat;
+    exerciseId : ExerciseId__993711363;
+    explanation : Text;
+    prompt : Text;
+    selectedIndex : Nat
+  };
+type ExamQuestion__469155169 =
+  {choices : [Text]; exerciseId : ExerciseId__993711363; prompt : Text};
+type ExamQuestion__900837042 =
+  {choices : [Text]; exerciseId : ExerciseId__592956379; prompt : Text};
+type ExamResult__353274505 =
+  {
+    examId : ExamId__379139927;
+    results : [ExamQuestionResult__317885813];
+    score : Nat;
+    sessionId : SessionId__1052913375;
+    total : Nat
+  };
+type ExamResult__657790461 =
+  {
+    examId : ExamId__480491481;
+    results : [ExamQuestionResult__789162871];
+    score : Nat;
+    sessionId : SessionId__382603865;
+    total : Nat
+  };
+type ExamSession__200933413 =
+  {
+    durationSeconds : Nat;
+    examId : ExamId__379139927;
+    lessonId : LessonId__21783266;
+    sessionId : SessionId__1052913375;
+    startedAt : Timestamp__301639476;
+    submitted : Bool
+  };
+type ExamSession__507824099 =
+  {
+    durationSeconds : Nat;
+    examId : ExamId__480491481;
+    lessonId : LessonId__3924353;
+    sessionId : SessionId__382603865;
+    startedAt : Timestamp__9856652;
+    submitted : Bool
+  };
+type Exam__179298572 =
+  {
+    durationSeconds : Nat;
+    id : ExamId__379139927;
+    lessonId : LessonId__21783266;
+    questions : [ExamQuestion__900837042];
+    title : Text
+  };
+type Exam__831726931 =
+  {
+    durationSeconds : Nat;
+    id : ExamId__480491481;
+    lessonId : LessonId__3924353;
+    questions : [ExamQuestion__469155169];
+    title : Text
+  };
+type ExerciseId__592956379 = Nat;
+type ExerciseId__993711363 = Nat;
+type Exercise__371799647 =
+  {
+    choices : [Text];
+    correctIndex : Nat;
+    explanation : Text;
+    id : ExerciseId__592956379;
+    lessonId : LessonId__21783266;
+    prompt : Text
+  };
+type Exercise__726409453 =
+  {
+    choices : [Text];
+    correctIndex : Nat;
+    explanation : Text;
+    id : ExerciseId__993711363;
+    lessonId : LessonId__3924353;
+    prompt : Text
+  };
+type Internal__283199666<K, V> =
+  {children : [var ?Node__204828119<K, V>]; data : Data__44217153<K, V>};
+type Leaf__598469445<K, V> = {data : Data__44217153<K, V>};
+type LearningStep__16374141 =
+  {
+    #comprendre;
+    #corriger;
+    #entrainer;
+    #exemple;
+    #maitriser;
+    #memoriser;
+    #tester
+  };
+type LearningStep__703056092 =
+  {
+    #comprendre;
+    #corriger;
+    #entrainer;
+    #exemple;
+    #maitriser;
+    #memoriser;
+    #tester
+  };
+type LessonId__21783266 = Nat;
+type LessonId__3924353 = Nat;
+type LessonProgress__157558518 =
+  {
+    currentStep : LearningStep__16374141;
+    lessonId : LessonId__21783266;
+    masteryRate : Nat;
+    steps : [StepState__1047703484];
+    updatedAt : Timestamp__301639476
+  };
+type LessonProgress__729910712 =
+  {
+    currentStep : LearningStep__703056092;
+    lessonId : LessonId__3924353;
+    masteryRate : Nat;
+    steps : [StepState__324459862];
+    updatedAt : Timestamp__9856652
+  };
+type Lesson__624227053 =
+  {
+    country : Text;
+    curriculum : Text;
+    example : Text;
+    explanation : Text;
+    id : LessonId__3924353;
+    keyPoints : [Text];
+    language : Text;
+    level : Text;
+    memorizationPoints : [Text];
+    memorizationSummary : Text;
+    subjectId : SubjectId__619191982;
+    title : Text
+  };
+type Lesson__72389269 =
+  {
+    country : Text;
+    curriculum : Text;
+    example : Text;
+    explanation : Text;
+    id : LessonId__21783266;
+    keyPoints : [Text];
+    language : Text;
+    level : Text;
+    memorizationPoints : [Text];
+    memorizationSummary : Text;
+    subjectId : SubjectId__402408784;
+    title : Text
+  };
+type List__355132335<T> =
+  {
+    var blockIndex : Nat__227979830;
+    var blocks : [var [var ?T]];
+    var elementIndex : Nat__227979830
+  };
+type List__836382695<T> = List__355132335<T>;
+type Map__230067015<K, V> = Map__405889023<K, V>;
+type Map__405889023<K, V> = Map__603270868<K, V>;
+type Map__603270868<K, V> =
+  {var root : Node__204828119<K, V>; var size : Nat__227979830};
+type Nat__227979830 = Nat__920180692;
+type Nat__920180692 = Nat;
+type NewActor__103977974 =
+  {
+    accessControlState : AccessControlState__201339279;
+    activity :
+      Map__230067015<Principal, List__836382695<ActivityEntry__469211229>>;
+    badges : Map__230067015<BadgeId__744806540, Badge__339734599>;
+    examResults : Map__230067015<SessionId__382603865, ExamResult__657790461>;
+    examSessions :
+      Map__230067015<SessionId__382603865, ExamSession__507824099>;
+    exams : Map__230067015<ExamId__480491481, Exam__831726931>;
+    exercises : Map__230067015<ExerciseId__993711363, Exercise__726409453>;
+    lessons : Map__230067015<LessonId__3924353, Lesson__624227053>;
+    nextSessionId : {var value : Nat};
+    profiles : Map__230067015<Principal, StudentProfile__293682105>;
+    progress :
+      Map__230067015<Principal,
+                      Map__230067015<LessonId__3924353,
+                                      LessonProgress__729910712>>;
+    subjects : Map__230067015<SubjectId__619191982, Subject__95108082>
+  };
+type Node__204828119<K, V> =
+  {#internal : Internal__283199666<K, V>; #leaf : Leaf__598469445<K, V>};
+type SessionId__1052913375 = Nat;
+type SessionId__382603865 = Nat;
+type StepState__1047703484 =
+  {completed : Bool; step : LearningStep__16374141};
+type StepState__324459862 =
+  {completed : Bool; step : LearningStep__703056092};
+type StudentProfile__293682105 =
+  {
+    country : Text;
+    curriculum : Text;
+    exercisesCompleted : Nat;
+    language : Text;
+    lessonsCompleted : Nat;
+    level : Text;
+    points : Nat;
+    studentLevel : Nat;
+    updatedAt : Timestamp__9856652
+  };
+type StudentProfile__499678722 =
+  {
+    country : Text;
+    curriculum : Text;
+    exercisesCompleted : Nat;
+    language : Text;
+    lessonsCompleted : Nat;
+    level : Text;
+    points : Nat;
+    studentLevel : Nat;
+    updatedAt : Timestamp__301639476
+  };
+type SubjectId__402408784 = Nat;
+type SubjectId__619191982 = Nat;
+type Subject__511420708 =
+  {description : Text; icon : Text; id : SubjectId__402408784; name : Text};
+type Subject__95108082 =
+  {description : Text; icon : Text; id : SubjectId__619191982; name : Text};
+type Timestamp__301639476 = Int;
+type Timestamp__9856652 = Int;
+type UserRole__91647283 = {#admin; #guest; #user};
+{
+  "20261006_120000" : {} -> NewActor__103977974
+}
+actor  {
+  stable accessControlState :
+    {
+      var adminAssigned : Bool;
+      userRoles : Map__230067015<Principal, UserRole__91647283>
+    };
+  stable activity :
+    {
+      var root :
+        Node__204828119<Principal, List__836382695<ActivityEntry__608430235>>;
+      var size : Nat__227979830
+    };
+  stable badges :
+    {
+      var root : Node__204828119<Text, Badge__637517080>;
+      var size : Nat__227979830
+    };
+  stable examResults :
+    {
+      var root : Node__204828119<Nat, ExamResult__353274505>;
+      var size : Nat__227979830
+    };
+  stable examSessions :
+    {
+      var root : Node__204828119<Nat, ExamSession__200933413>;
+      var size : Nat__227979830
+    };
+  stable exams :
+    {
+      var root : Node__204828119<Nat, Exam__179298572>;
+      var size : Nat__227979830
+    };
+  stable exercises :
+    {
+      var root : Node__204828119<Nat, Exercise__371799647>;
+      var size : Nat__227979830
+    };
+  stable lessons :
+    {
+      var root : Node__204828119<Nat, Lesson__72389269>;
+      var size : Nat__227979830
+    };
+  stable nextSessionId : {var value : Nat};
+  stable profiles :
+    {
+      var root : Node__204828119<Principal, StudentProfile__499678722>;
+      var size : Nat__227979830
+    };
+  stable progress :
+    {
+      var root :
+        Node__204828119<Principal,
+                         Map__230067015<Nat, LessonProgress__157558518>>;
+      var size : Nat__227979830
+    };
+  stable subjects :
+    {
+      var root : Node__204828119<Nat, Subject__511420708>;
+      var size : Nat__227979830
+    }
+};
